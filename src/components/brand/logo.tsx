@@ -14,14 +14,14 @@ export function Logo({
       className={`group inline-flex shrink-0 items-center gap-2.5 ${className}`}
       aria-label="Global Web Experts — home"
     >
-      <span className="relative block h-9 w-9 overflow-hidden rounded-sm bg-black">
+      <span className="relative block h-9 w-9 shrink-0 overflow-hidden rounded-sm bg-black">
         <img
           src={logo.url}
           alt=""
           aria-hidden="true"
           width={512}
           height={512}
-          className="absolute left-1/2 top-1/2 h-[280%] w-[280%] max-w-none -translate-x-[64%] -translate-y-1/2 object-contain"
+          className="h-full w-full scale-110 object-contain"
         />
       </span>
       {showWordmark ? (
