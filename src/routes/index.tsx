@@ -261,6 +261,66 @@ function Home() {
       </Section>
 
       <Section className="border-t border-border bg-surface-2">
+        <SectionHeading
+          eyebrow="Search performance"
+          title="SEO results reported by Google itself"
+          lead="Clicks, impressions and keyword counts taken straight from our clients' own Search Console and Rank Math dashboards."
+        />
+        <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {seoResults.map((r, i) => (
+            <Reveal key={r.site} delay={i * 70}>
+              <div className="flex h-full flex-col rounded-sm border border-border bg-surface p-6">
+                <p className="font-display text-3xl font-extrabold">{r.stats[0].value}</p>
+                <p className="mt-1 text-sm font-medium">{r.stats[0].label}</p>
+                <p className="mt-3 text-xs text-muted-foreground">{r.site}</p>
+              </div>
+            </Reveal>
+          ))}
+        </div>
+        <Link to="/results" className="mt-8 inline-flex text-sm font-semibold text-accent">
+          See the full reports →
+        </Link>
+      </Section>
+
+      {testimonials.length ? (
+        <Section>
+          <SectionHeading
+            eyebrow="In their words"
+            title="Client feedback, unedited"
+            lead="Recorded voice notes and direct messages from the businesses we work with."
+          />
+          <div className="mt-10 grid gap-6 lg:grid-cols-2">
+            {testimonials.map((t, i) => (
+              <Reveal key={t.name} delay={i * 70}>
+                <div className="flex h-full flex-col rounded-sm border border-border bg-surface p-6">
+                  <h3 className="font-display text-lg font-bold">{t.name}</h3>
+                  {t.website ? (
+                    <p className="mt-1 text-sm text-accent">{t.website}</p>
+                  ) : null}
+                  <p className="mt-3 flex-1 text-sm leading-relaxed text-muted-foreground">
+                    {t.quote}
+                  </p>
+                  {t.audioUrl ? (
+                    <AudioReview
+                      className="mt-5"
+                      src={t.audioUrl}
+                      label={t.audioLabel ?? "Play voice review"}
+                    />
+                  ) : null}
+                  <Link
+                    to="/testimonials"
+                    className="mt-5 inline-flex text-sm font-semibold text-accent"
+                  >
+                    All testimonials →
+                  </Link>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </Section>
+      ) : null}
+
+      <Section className="border-t border-border bg-surface-2">
         <div className="flex flex-wrap items-end justify-between gap-6">
           <SectionHeading
             eyebrow="Insights"
