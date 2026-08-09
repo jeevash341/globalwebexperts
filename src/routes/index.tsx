@@ -32,10 +32,10 @@ export const Route = createFileRoute("/")({
 });
 
 const proofStats = [
-  { value: 3.19, suffix: "K", label: "YouTube subscribers", note: "AA Pool Service" },
-  { value: 2.47, suffix: "K", label: "YouTube subscribers", note: "Quetta Sudais 2D" },
-  { value: 1.1, suffix: "K", label: "Facebook followers", note: "SafeLink Technologies" },
-  { value: 2022, suffix: "", label: "Operating since", note: "Karachi, Pakistan" },
+  { value: 50, suffix: "+", label: "Projects completed", note: "Across all service lines" },
+  { value: 100, suffix: "+", label: "Clients worked for", note: "Pakistan & international" },
+  { value: 4.9, suffix: "/5.0", label: "Client rating", note: "Average review score" },
+  { value: 2022, suffix: "", label: "Operating since", note: "Karachi, Sindh" },
 ];
 
 const pillars = [
