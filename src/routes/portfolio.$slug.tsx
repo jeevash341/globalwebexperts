@@ -108,7 +108,13 @@ function CaseStudy() {
         <div className="mt-8 grid gap-4 md:grid-cols-3">
           {project.proof.map((shot) => (
             <figure key={shot.url} className="overflow-hidden rounded-sm border border-border bg-surface">
-              <img src={shot.url} alt={shot.alt} loading="lazy" className="w-full object-cover" />
+              <img
+                src={shot.url}
+                alt={shot.alt}
+                loading="lazy"
+                decoding="async"
+                className="w-full object-contain"
+              />
               <figcaption className="border-t border-border p-3 text-xs text-muted-foreground">
                 {shot.caption}
               </figcaption>
