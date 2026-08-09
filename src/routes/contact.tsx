@@ -1,6 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Clock, Mail, MapPin, Phone } from "lucide-react";
+import { Clock, Mail, MapPin, Phone, Quote } from "lucide-react";
+import founderOfficePortrait from "@/assets/founder-office-portrait.png.asset.json";
 import { LeadForm } from "@/components/contact/lead-form";
+import { Reveal } from "@/components/ui-kit/reveal";
 import { Section } from "@/components/ui-kit/section";
 import { addressOneLine, mailtoUrl, mapsEmbedUrl, site, telUrl, whatsappUrl } from "@/data/site";
 import { canonical, pageMeta } from "@/lib/seo";
