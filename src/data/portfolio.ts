@@ -45,7 +45,6 @@ export const portfolioFilters = [
   "SEO & Digital Growth",
   "Social Media",
   "AI Video",
-  "Business Solutions",
 ] as const;
 
 export const projects: Project[] = [
@@ -53,7 +52,7 @@ export const projects: Project[] = [
     slug: "safelink-technologies",
     name: "SafeLink Technologies (Pvt) Ltd",
     industry: "Home & Business Security Systems",
-    categories: ["Web Development", "Branding", "SEO & Digital Growth", "Social Media"],
+    categories: ["Web Development", "Branding", "Social Media"],
     summary:
       "A security systems company with strong field expertise and a limited digital footprint. We built and maintained a multi-platform presence around electric fencing, CCTV, gate and home automation installation.",
     challenge: [
@@ -121,7 +120,7 @@ export const projects: Project[] = [
     slug: "quetta-sudais-2d",
     name: "Quetta Sudais 2D Car Service & Rental Company",
     industry: "Car Rental, Cargo & Transport Services",
-    categories: ["Web Development", "SEO & Digital Growth", "Social Media", "AI Video"],
+    categories: ["Web Development", "Social Media", "AI Video"],
     summary:
       "A car rental, cargo and transport business serving routes across Pakistan. We built a video-led digital presence around real journeys, real fleet and clearly published contact routes.",
     challenge: [
@@ -182,7 +181,7 @@ export const projects: Project[] = [
     slug: "aa-pool-service",
     name: "AA Pool Service",
     industry: "Swimming Pool Design, Construction & Maintenance",
-    categories: ["SEO & Digital Growth", "Social Media", "AI Video", "Web Development"],
+    categories: ["Social Media", "AI Video", "Web Development"],
     summary:
       "A swimming pool construction and maintenance company whose finished work is inherently visual. We turned completed projects into a continuous video-led content engine.",
     challenge: [
