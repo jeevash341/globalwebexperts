@@ -1,6 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Clock, Mail, MapPin, Phone } from "lucide-react";
+import { Clock, Mail, MapPin, Phone, Quote } from "lucide-react";
+import founderOfficePortrait from "@/assets/founder-office-portrait.png.asset.json";
 import { LeadForm } from "@/components/contact/lead-form";
+import { Reveal } from "@/components/ui-kit/reveal";
 import { Section } from "@/components/ui-kit/section";
 import { addressOneLine, mailtoUrl, mapsEmbedUrl, site, telUrl, whatsappUrl } from "@/data/site";
 import { canonical, pageMeta } from "@/lib/seo";
@@ -89,6 +91,61 @@ function Contact() {
             />
           </div>
         </div>
+      </Section>
+
+      <Section className="border-t border-border bg-surface-2">
+        <Reveal>
+          <div className="mx-auto max-w-4xl">
+            <div className="group relative overflow-hidden rounded-sm border border-border bg-background p-1">
+              {/* animated corner accents */}
+              <span className="absolute left-0 top-0 z-10 h-10 w-10 border-l-2 border-t-2 border-accent transition-all duration-500 group-hover:h-16 group-hover:w-16" />
+              <span className="absolute right-0 top-0 z-10 h-10 w-10 border-r-2 border-t-2 border-accent transition-all duration-500 group-hover:h-16 group-hover:w-16" />
+              <span className="absolute bottom-0 left-0 z-10 h-10 w-10 border-b-2 border-l-2 border-accent transition-all duration-500 group-hover:h-16 group-hover:w-16" />
+              <span className="absolute bottom-0 right-0 z-10 h-10 w-10 border-b-2 border-r-2 border-accent transition-all duration-500 group-hover:h-16 group-hover:w-16" />
+
+              <div className="grid gap-6 p-5 sm:p-8 md:grid-cols-[1fr_1.2fr] md:items-center">
+                <div className="relative overflow-hidden rounded-sm border border-border">
+                  <img
+                    src={founderOfficePortrait.url}
+                    alt="Jeevash Khatri, CEO and Founder of Global Web Experts, at the Global Web Experts office"
+                    width={900}
+                    height={1100}
+                    loading="lazy"
+                    decoding="async"
+                    className="aspect-[4/5] w-full object-contain transition-transform duration-700 group-hover:scale-[1.02]"
+                  />
+                </div>
+                <div className="relative">
+                  <Quote className="mb-4 h-8 w-8 text-accent/60" />
+                  <p className="font-display text-xl font-bold leading-snug sm:text-2xl">
+                    Every project we take is handled personally. You are not talking to a sales team — you are talking to the founder.
+                  </p>
+                  <div className="mt-6 border-t border-border pt-6">
+                    <p className="font-display text-lg font-bold">{site.founder}</p>
+                    <p className="text-sm font-semibold text-accent">CEO & Founder</p>
+                    <p className="mt-1 text-sm text-muted-foreground">{site.legalName}</p>
+                  </div>
+                  <div className="mt-5 flex flex-wrap gap-3">
+                    <a
+                      href={whatsappUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="rounded-sm bg-primary px-4 py-2.5 text-sm font-semibold text-primary-foreground transition-transform hover:scale-[1.02]"
+                    >
+                      Message on WhatsApp
+                    </a>
+                    <a
+                      href={`mailto:${site.email}`}
+                      className="rounded-sm border border-border px-4 py-2.5 text-sm font-semibold transition-colors hover:bg-secondary"
+                    >
+                      Email directly
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </Reveal>
       </Section>
     </>
   );
