@@ -5,7 +5,7 @@ import { Section } from "@/components/ui-kit/section";
 import { portfolioFilters, projects } from "@/data/portfolio";
 import { launchedSites } from "@/data/websites";
 import { seoResults } from "@/data/seo-results";
-import { aiVideos, logoDesigns, posterDesigns } from "@/data/showcase";
+import { aiVideos, logoDesigns, posterDesigns, stationeryDesigns } from "@/data/showcase";
 import { canonical, pageMeta } from "@/lib/seo";
 
 export const Route = createFileRoute("/portfolio/")({
@@ -23,7 +23,10 @@ export const Route = createFileRoute("/portfolio/")({
 
 function PortfolioIndex() {
   const [filter, setFilter] = useState<string>("All");
-  const visible = projects.filter((p) => filter === "All" || p.categories.includes(filter));
+  const showCaseStudies = filter === "All" || filter === "Social Media";
+  const visible = showCaseStudies
+    ? projects.filter((p) => filter === "All" || p.categories.includes(filter))
+    : [];
   const show = (category: string) => filter === "All" || filter === category;
 
   return (
@@ -58,6 +61,7 @@ function PortfolioIndex() {
           ))}
         </div>
 
+        {showCaseStudies ? (
         <div className="mt-10 grid gap-6 lg:grid-cols-2">
           {visible.map((p, i) => (
             <Reveal key={p.slug} delay={i * 70}>
@@ -98,11 +102,8 @@ function PortfolioIndex() {
             </Reveal>
           ))}
         </div>
-        {visible.length === 0 &&
-        !show("Web Development") &&
-        !show("SEO & Digital Growth") &&
-        !show("AI Video") &&
-        !show("Branding") ? (
+        ) : null}
+        {showCaseStudies && visible.length === 0 ? (
           <p className="mt-10 text-sm text-muted-foreground">
             No published case studies in this category yet — new work is added as clients approve it.
           </p>
@@ -301,6 +302,39 @@ function PortfolioIndex() {
                   </p>
                   <h3 className="mt-3 font-display text-lg font-bold">{p.title}</h3>
                   <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{p.note}</p>
+                </div>
+              </article>
+            ))}
+          </div>
+
+          <h2 className="mt-16 font-display text-3xl font-extrabold">
+            Bill book, cash memo &amp; visiting card design
+          </h2>
+          <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted-foreground">
+            Print stationery designed for client operations — billing documents and business cards
+            built on the same brand system.
+          </p>
+          <div className="mt-10 grid gap-6 md:grid-cols-2">
+            {stationeryDesigns.map((s) => (
+              <article
+                key={s.id}
+                className="flex flex-col overflow-hidden rounded-sm border border-border bg-surface"
+              >
+                <div className="border-b border-border bg-surface-2">
+                  <img
+                    src={s.url}
+                    alt={s.alt}
+                    loading="lazy"
+                    decoding="async"
+                    className="w-full object-contain"
+                  />
+                </div>
+                <div className="flex flex-1 flex-col p-6">
+                  <p className="font-mono text-[0.65rem] uppercase tracking-[0.18em] text-accent">
+                    {s.meta}
+                  </p>
+                  <h3 className="mt-3 font-display text-lg font-bold">{s.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{s.note}</p>
                 </div>
               </article>
             ))}
