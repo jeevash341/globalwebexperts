@@ -11,6 +11,12 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import { Header } from "@/components/layout/header";
+import { Footer } from "@/components/layout/footer";
+import { FloatingContact } from "@/components/layout/floating-contact";
+import { ThemeProvider, themeInitScript } from "@/components/theme/theme-provider";
+import { Toaster } from "@/components/ui/sonner";
+import { addressOneLine, site } from "@/data/site";
 
 function NotFoundComponent() {
   return (
@@ -77,21 +83,54 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: `${site.name} — Digital Agency in Karachi, Pakistan` },
+      { name: "description", content: site.positioning },
+      { name: "author", content: site.founder },
       { property: "og:type", content: "website" },
+      { property: "og:site_name", content: site.name },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:site", content: "@Lovable" },
     ],
     links: [
       {
         rel: "stylesheet",
         href: appCss,
       },
-      { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
+      { rel: "icon", href: "/favicon.png", type: "image/png" },
+      { rel: "preconnect", href: "https://fonts.googleapis.com" },
+      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
+      {
+        rel: "stylesheet",
+        href: "https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap",
+      },
+    ],
+    scripts: [
+      { children: themeInitScript },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "ProfessionalService",
+          name: site.legalName,
+          alternateName: site.name,
+          url: site.url,
+          slogan: site.tagline,
+          foundingDate: String(site.founded),
+          founder: { "@type": "Person", name: site.founder, jobTitle: site.founderRole },
+          email: site.email,
+          telephone: site.phoneIntl,
+          openingHours: "Mo-Sa 09:00-17:00",
+          address: {
+            "@type": "PostalAddress",
+            streetAddress: `${site.address.line1}, ${site.address.line2}`,
+            addressLocality: site.address.city,
+            postalCode: site.address.postalCode,
+            addressRegion: site.address.region,
+            addressCountry: "PK",
+          },
+          description: addressOneLine,
+          sameAs: [site.socials.facebook, site.socials.instagram, site.socials.tiktok],
+        }),
+      },
     ],
   }),
   shellComponent: RootShell,
@@ -119,8 +158,18 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-      <Outlet />
+      <ThemeProvider>
+        <div className="flex min-h-screen flex-col bg-background">
+          <Header />
+          <main className="flex-1">
+            {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
+            <Outlet />
+          </main>
+          <Footer />
+          <FloatingContact />
+          <Toaster position="top-center" richColors />
+        </div>
+      </ThemeProvider>
     </QueryClientProvider>
   );
 }
