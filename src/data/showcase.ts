@@ -8,6 +8,14 @@ import posterAaPool from "@/assets/poster-aapool.jpg.asset.json";
 import posterAaPoolStore from "@/assets/poster-aapool-storefront.jpg.asset.json";
 import aiVideo1 from "@/assets/ai-video-1.mp4.asset.json";
 import aiVideo2 from "@/assets/ai-video-2.mp4.asset.json";
+import posterSafelinkCctv from "@/assets/poster-safelink-cctv.jpg.asset.json";
+import posterSafelinkLahore from "@/assets/poster-safelink-lahore.jpg.asset.json";
+import posterSafelinkBillboard from "@/assets/poster-safelink-billboard.jpg.asset.json";
+import posterSafelinkRashid from "@/assets/poster-safelink-review-rashid.jpg.asset.json";
+import posterSafelinkRizwan from "@/assets/poster-safelink-review-rizwan.jpg.asset.json";
+import posterMuharram from "@/assets/poster-gwe-muharram.jpg.asset.json";
+import billbookMalik from "@/assets/billbook-malik.jpg.asset.json";
+import cardMalik from "@/assets/visitingcard-malik.jpg.asset.json";
 
 export type ShowcaseItem = {
   id: string;
@@ -86,6 +94,73 @@ export const posterDesigns: ShowcaseItem[] = [
     note: "Storefront and signage visual establishing the retail identity, service lines and contact details in one frame.",
     url: posterAaPoolStore.url,
     alt: "AA Pool Service branded storefront with signage and product display",
+  },
+  {
+    id: "safelink-cctv",
+    title: "SafeLink Technologies — CCTV Service Poster",
+    meta: "Security Systems",
+    note: "Offer-led social poster built around the CCTV service line, with discount call-out, QR code and direct contact block.",
+    url: posterSafelinkCctv.url,
+    alt: "SafeLink Technologies CCTV service poster with 50% discount offer",
+  },
+  {
+    id: "safelink-lahore",
+    title: "SafeLink Technologies — Lahore Launch Poster",
+    meta: "Brand Campaign",
+    note: "Premium launch announcement poster presenting the full security service range in a black and gold skyline treatment.",
+    url: posterSafelinkLahore.url,
+    alt: "SafeLink Technologies Now Open in Lahore launch poster",
+  },
+  {
+    id: "safelink-billboard",
+    title: "SafeLink Technologies — Billboard Creative",
+    meta: "Outdoor Advertising",
+    note: "Large-format billboard concept pairing the leadership portrait with service icons and a single trusted-partner message.",
+    url: posterSafelinkBillboard.url,
+    alt: "SafeLink Technologies billboard creative mock-up on a city highway",
+  },
+  {
+    id: "safelink-review-rashid",
+    title: "SafeLink Technologies — Review Post (Rashid Sheikh)",
+    meta: "Social Proof Creative",
+    note: "Customer review template turning verified feedback into a clean, branded social post with service trust badges.",
+    url: posterSafelinkRashid.url,
+    alt: "SafeLink Technologies customer review poster for Rashid Sheikh",
+  },
+  {
+    id: "safelink-review-rizwan",
+    title: "SafeLink Technologies — Review Post (Rizwan Ali)",
+    meta: "Social Proof Creative",
+    note: "Google review creative in the same template system, keeping testimonial posts instantly recognisable in the feed.",
+    url: posterSafelinkRizwan.url,
+    alt: "SafeLink Technologies Google review poster for Rizwan Ali",
+  },
+  {
+    id: "gwe-muharram",
+    title: "Global Web Experts — Muharram Greeting",
+    meta: "Occasion Campaign",
+    note: "In-house occasion creative using the brand palette, arch motif and a WhatsApp QR for direct enquiries.",
+    url: posterMuharram.url,
+    alt: "Global Web Experts Muharram greeting poster",
+  },
+];
+
+export const stationeryDesigns: ShowcaseItem[] = [
+  {
+    id: "malik-billbook",
+    title: "Malik Rent A Car — Bill Book & Cash Memo",
+    meta: "Print & Stationery Design",
+    note: "Print-ready bill book and cash memo layout with rental booking fields, itemised billing table and signature blocks.",
+    url: billbookMalik.url,
+    alt: "Malik Rent A Car bill book and cash memo design in navy and gold",
+  },
+  {
+    id: "malik-visiting-card",
+    title: "Malik Car Rentals — Visiting Card",
+    meta: "Print & Stationery Design",
+    note: "Double-sided visiting card design with the crest logo, contact stack and premium gold-on-navy finish.",
+    url: cardMalik.url,
+    alt: "Malik Car Rentals visiting card design with gold crest logo",
   },
 ];
 
