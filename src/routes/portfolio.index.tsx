@@ -67,7 +67,8 @@ function PortfolioIndex() {
                     src={p.proof[0].url}
                     alt={p.proof[0].alt}
                     loading="lazy"
-                    className="aspect-[16/10] w-full border-b border-border object-cover object-top"
+                    decoding="async"
+                    className="w-full border-b border-border bg-surface-2 object-contain"
                   />
                 ) : null}
                 <div className="flex flex-1 flex-col p-6">

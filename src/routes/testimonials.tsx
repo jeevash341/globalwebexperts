@@ -69,7 +69,8 @@ function Testimonials() {
                     src={t.proofImage}
                     alt={t.proofAlt ?? `Client message from ${t.name}`}
                     loading="lazy"
-                    className="w-full object-cover"
+                    decoding="async"
+                    className="w-full object-contain"
                   />
                   {t.proofCaption ? (
                     <figcaption className="border-t border-border p-3 text-xs text-muted-foreground">
