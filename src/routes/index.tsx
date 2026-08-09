@@ -270,8 +270,8 @@ function Home() {
           {seoResults.map((r, i) => (
             <Reveal key={r.site} delay={i * 70}>
               <div className="flex h-full flex-col rounded-sm border border-border bg-surface p-6">
-                <p className="font-display text-3xl font-extrabold">{r.stats[0].value}</p>
-                <p className="mt-1 text-sm font-medium">{r.stats[0].label}</p>
+                <p className="font-display text-3xl font-extrabold">{r.stats[0]?.value}</p>
+                <p className="mt-1 text-sm font-medium">{r.stats[0]?.label}</p>
                 <p className="mt-3 text-xs text-muted-foreground">{r.site}</p>
               </div>
             </Reveal>
