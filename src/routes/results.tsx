@@ -44,12 +44,13 @@ function Results() {
               key={s.site}
               className="flex flex-col overflow-hidden rounded-sm border border-border bg-surface"
             >
-              <div className="max-h-64 overflow-hidden border-b border-border bg-surface-2">
+              <div className="border-b border-border bg-surface-2">
                 <img
                   src={s.image}
                   alt={s.alt}
                   loading="lazy"
-                  className="w-full object-cover object-top"
+                  decoding="async"
+                  className="w-full object-contain"
                 />
               </div>
               <div className="flex flex-1 flex-col p-6">
@@ -105,7 +106,13 @@ function Results() {
               <p className="mt-5 text-sm leading-relaxed text-muted-foreground">{r.narrative}</p>
 
               <figure className="mt-5 overflow-hidden rounded-sm border border-border">
-                <img src={r.image} alt={r.alt} loading="lazy" className="w-full object-cover" />
+                <img
+                  src={r.image}
+                  alt={r.alt}
+                  loading="lazy"
+                  decoding="async"
+                  className="w-full object-contain"
+                />
                 <figcaption className="border-t border-border p-3 text-xs text-muted-foreground">
                   {r.window} · {r.source}
                 </figcaption>
@@ -133,7 +140,13 @@ function Results() {
           <div className="mt-8 grid gap-4 md:grid-cols-3">
             {p.proof.map((shot) => (
               <figure key={shot.url} className="overflow-hidden rounded-sm border border-border">
-                <img src={shot.url} alt={shot.alt} loading="lazy" className="w-full object-cover" />
+                <img
+                  src={shot.url}
+                  alt={shot.alt}
+                  loading="lazy"
+                  decoding="async"
+                  className="w-full object-contain"
+                />
                 <figcaption className="border-t border-border p-3 text-xs text-muted-foreground">
                   {shot.caption}
                 </figcaption>
