@@ -23,7 +23,10 @@ export const Route = createFileRoute("/")({
         "Global Web Experts builds websites, brands, SEO growth, AI video and business systems for companies in Pakistan and worldwide. Founded 2022 by Jeevash Khatri.",
       path: "/",
     }),
-    links: canonical("/"),
+    links: [
+      ...canonical("/"),
+      { rel: "preload", as: "image", href: office.url, fetchpriority: "high" },
+    ],
   }),
   component: Home,
 });
