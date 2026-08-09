@@ -98,7 +98,11 @@ function PortfolioIndex() {
             </Reveal>
           ))}
         </div>
-        {visible.length === 0 ? (
+        {visible.length === 0 &&
+        !show("Web Development") &&
+        !show("SEO & Digital Growth") &&
+        !show("AI Video") &&
+        !show("Branding") ? (
           <p className="mt-10 text-sm text-muted-foreground">
             No published case studies in this category yet — new work is added as clients approve it.
           </p>
@@ -161,7 +165,9 @@ function PortfolioIndex() {
             Math dashboard.
           </p>
           <div className="mt-10 grid gap-6 lg:grid-cols-2">
-            {seoResults.map((r) => (
+            {seoResults
+              .filter((r) => r.site === "aaarentacar.pk")
+              .map((r) => (
               <article
                 key={r.site}
                 className="flex flex-col rounded-sm border border-border bg-surface p-6"

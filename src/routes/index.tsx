@@ -275,7 +275,9 @@ function Home() {
           lead="Clicks, impressions and keyword counts taken straight from our clients' own Search Console and Rank Math dashboards."
         />
         <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {seoResults.map((r, i) => (
+          {seoResults
+            .filter((r) => r.site === "aaarentacar.pk")
+            .map((r, i) => (
             <Reveal key={r.site} delay={i * 70}>
               <div className="flex h-full flex-col rounded-sm border border-border bg-surface p-6">
                 <p className="font-display text-3xl font-extrabold">{r.stats[0]?.value}</p>
