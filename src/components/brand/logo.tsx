@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import logo from "@/assets/logo.asset.json";
+import logo from "@/assets/logo-sphere.asset.json";
 
 export function Logo({
   className = "",
@@ -14,14 +14,14 @@ export function Logo({
       className={`group inline-flex shrink-0 items-center gap-2.5 ${className}`}
       aria-label="Global Web Experts — home"
     >
-      <span className="relative block h-9 w-9 shrink-0 overflow-hidden rounded-sm bg-black">
+      <span className="relative block h-9 w-9 shrink-0 overflow-hidden">
         <img
           src={logo.url}
           alt=""
           aria-hidden="true"
           width={512}
           height={512}
-          className="h-full w-full scale-110 object-contain"
+          className="h-full w-full object-contain"
         />
       </span>
       {showWordmark ? (

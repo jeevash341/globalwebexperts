@@ -1,5 +1,6 @@
 import reviewSafelink from "@/assets/review-safelink.asset.json";
 import testimonialCruise from "@/assets/testimonial-cruise.asset.json";
+import testimonialMalik from "@/assets/testimonial-malik.asset.json";
 
 export type Testimonial = {
   name: string;
@@ -53,6 +54,18 @@ export const testimonials: Testimonial[] = [
     proofImage: testimonialCruise.url,
     proofAlt:
       "WhatsApp message from the Cruise Rent A Car client replying that the delivered website is very good",
+    proofCaption: "Client message — WhatsApp, unedited screenshot",
+  },
+  {
+    name: "Malik Rent A Car",
+    business: "Car Rental Services",
+    project: "Google Business Profile listing, branding and SEO",
+    services: ["Google Business Profile listing", "Branding", "SEO"],
+    quote:
+      "Asked how the working relationship felt, the client answered in two words: “Boht zbrdast” — absolutely excellent.",
+    proofImage: testimonialMalik.url,
+    proofAlt:
+      "WhatsApp message from the Malik Rent A Car client replying that working together has been excellent",
     proofCaption: "Client message — WhatsApp, unedited screenshot",
   },
 ];
