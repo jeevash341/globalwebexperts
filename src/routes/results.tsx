@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Section, SectionHeading } from "@/components/ui-kit/section";
 import { projects } from "@/data/portfolio";
+import { seoResults } from "@/data/seo-results";
 import { canonical, pageMeta } from "@/lib/seo";
 
 export const Route = createFileRoute("/results")({
@@ -8,7 +9,7 @@ export const Route = createFileRoute("/results")({
     meta: pageMeta({
       title: "Client Results & Social Proof | Global Web Experts",
       description:
-        "Verified client platform statistics from Global Web Experts campaigns — YouTube, Facebook, Instagram and TikTok growth across real client accounts.",
+        "Verified client results from Global Web Experts — Google Search Console SEO performance plus YouTube, Facebook, Instagram and TikTok growth across real client accounts.",
       path: "/results",
     }),
     links: canonical("/results"),
@@ -28,6 +29,50 @@ function Results() {
           These are our clients' own audience numbers, captured from their live profiles. They belong
           to the businesses named, not to Global Web Experts.
         </p>
+      </Section>
+
+      <Section className="border-b border-border bg-surface-2">
+        <SectionHeading
+          eyebrow="Search performance"
+          title="SEO results, measured in Google's own reporting"
+          lead="Each figure below is read directly from the client's Google Search Console or Rank Math dashboard. Clicks and impressions are Google's numbers, not our estimates."
+        />
+        <div className="mt-10 grid gap-6 lg:grid-cols-2">
+          {seoResults.map((r) => (
+            <article
+              key={r.site}
+              className="flex flex-col rounded-sm border border-border bg-surface p-6"
+            >
+              <p className="font-mono text-[0.65rem] uppercase tracking-[0.18em] text-accent">
+                {r.industry}
+              </p>
+              <h3 className="mt-3 font-display text-xl font-bold">
+                <a href={r.url} target="_blank" rel="noopener noreferrer">
+                  {r.site}
+                </a>
+              </h3>
+              <p className="mt-1 text-sm text-muted-foreground">{r.scope}</p>
+
+              <div className="mt-5 grid grid-cols-2 gap-3 sm:grid-cols-3">
+                {r.stats.map((s) => (
+                  <div key={s.label} className="rounded-sm border border-border bg-surface-2 p-4">
+                    <p className="font-display text-2xl font-extrabold">{s.value}</p>
+                    <p className="mt-1 text-xs text-muted-foreground">{s.label}</p>
+                  </div>
+                ))}
+              </div>
+
+              <p className="mt-5 text-sm leading-relaxed text-muted-foreground">{r.narrative}</p>
+
+              <figure className="mt-5 overflow-hidden rounded-sm border border-border">
+                <img src={r.image} alt={r.alt} loading="lazy" className="w-full object-cover" />
+                <figcaption className="border-t border-border p-3 text-xs text-muted-foreground">
+                  {r.window} · {r.source}
+                </figcaption>
+              </figure>
+            </article>
+          ))}
+        </div>
       </Section>
 
       {projects.map((p) => (
