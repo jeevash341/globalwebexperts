@@ -134,7 +134,7 @@ function Home() {
           {proofStats.map((s, i) => (
             <Reveal key={s.note} delay={i * 70}>
               <p className="font-display text-3xl font-extrabold text-foreground sm:text-4xl">
-                <Counter to={s.value} suffix={s.suffix} decimals={s.value > 100 ? 0 : 2} />
+                <Counter to={s.value} suffix={s.suffix} decimals={Number.isInteger(s.value) ? 0 : 1} />
               </p>
               <p className="mt-1 text-sm font-medium text-foreground">{s.label}</p>
               <p className="text-xs text-muted-foreground">{s.note}</p>
