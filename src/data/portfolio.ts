@@ -40,7 +40,6 @@ export type Project = {
 export const portfolioFilters = [
   "All",
   "Web Development",
-  "E-Commerce",
   "Branding",
   "SEO & Digital Growth",
   "Social Media",
