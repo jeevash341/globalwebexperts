@@ -1,7 +1,7 @@
 import { Link, createFileRoute } from "@tanstack/react-router";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
-import founder from "@/assets/founder-1.asset.json";
-import office from "@/assets/office.asset.json";
+import founder from "@/assets/founder-portrait-brown.asset.json";
+import office from "@/assets/founder-portrait-black.asset.json";
 import { Counter } from "@/components/ui-kit/counter";
 import { Reveal } from "@/components/ui-kit/reveal";
 import { Section, SectionHeading } from "@/components/ui-kit/section";
@@ -105,10 +105,10 @@ function Home() {
             <div className="surface-panel overflow-hidden rounded-sm">
               <img
                 src={office.url}
-                alt="Jeevash Khatri at the Global Web Experts office in Karachi"
+                alt="Jeevash Khatri, founder and CEO of Global Web Experts"
                 width={1200}
                 height={800}
-                className="aspect-[4/3] w-full object-cover"
+                className="aspect-[4/3] w-full object-cover object-top"
               />
               <div className="border-t border-border p-5">
                 <p className="font-display text-lg font-bold">{site.founder}</p>
