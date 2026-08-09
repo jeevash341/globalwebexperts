@@ -1,7 +1,6 @@
 import { Link, createFileRoute } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
 import founder2 from "@/assets/founder-2.asset.json";
-import office from "@/assets/office.asset.json";
 import { Reveal } from "@/components/ui-kit/reveal";
 import { Section, SectionHeading } from "@/components/ui-kit/section";
 import { site } from "@/data/site";
@@ -71,41 +70,30 @@ function About() {
   return (
     <>
       <Section className="border-b border-border grid-lines">
-        <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
-          <div>
-            <p className="eyebrow">About the studio</p>
-            <h1 className="mt-4 text-balance font-display text-4xl font-extrabold leading-[1.05] sm:text-5xl">
-              A digital partner built for businesses that need results, not jargon
-            </h1>
-            <p className="mt-5 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg">
-              {site.legalName} was founded in {site.founded} in Karachi, Pakistan. We work with
-              owner-led businesses, growing companies and international clients who want their
-              website, brand and online visibility handled properly by one team.
-            </p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <Link
-                to="/contact"
-                className="rounded-sm bg-primary px-6 py-3.5 text-sm font-semibold text-primary-foreground"
-              >
-                Talk to us
-              </Link>
-              <Link
-                to="/portfolio"
-                className="rounded-sm border border-border px-6 py-3.5 text-sm font-semibold"
-              >
-                View case studies
-              </Link>
-            </div>
+        <div>
+          <p className="eyebrow">About the studio</p>
+          <h1 className="mt-4 text-balance font-display text-4xl font-extrabold leading-[1.05] sm:text-5xl">
+            A digital partner built for businesses that need results, not jargon
+          </h1>
+          <p className="mt-5 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg">
+            {site.legalName} was founded in {site.founded} in Karachi, Pakistan. We work with
+            owner-led businesses, growing companies and international clients who want their
+            website, brand and online visibility handled properly by one team.
+          </p>
+          <div className="mt-8 flex flex-wrap gap-3">
+            <Link
+              to="/contact"
+              className="rounded-sm bg-primary px-6 py-3.5 text-sm font-semibold text-primary-foreground"
+            >
+              Talk to us
+            </Link>
+            <Link
+              to="/portfolio"
+              className="rounded-sm border border-border px-6 py-3.5 text-sm font-semibold"
+            >
+              View case studies
+            </Link>
           </div>
-          <Reveal delay={100}>
-            <img
-              src={office.url}
-              alt="The Global Web Experts office in Karachi with the company logo on the wall"
-              width={1200}
-              height={800}
-              className="aspect-[4/3] w-full rounded-sm border border-border object-cover"
-            />
-          </Reveal>
         </div>
       </Section>
 
