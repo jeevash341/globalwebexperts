@@ -1,6 +1,6 @@
-import gscSafelink from "@/assets/gsc-safelink.asset.json";
-import gscBunshaw from "@/assets/gsc-bunshaw.asset.json";
-import gscAaPool from "@/assets/gsc-aapool.asset.json";
+import gscSafelink from "@/assets/gsc-safelink-hd.asset.json";
+import gscBunshaw from "@/assets/gsc-bunshaw-hd.asset.json";
+import gscAaPool from "@/assets/gsc-aapool-hd.asset.json";
 import gscAaaRentACar from "@/assets/gsc-aaarentacar.asset.json";
 
 export type SeoResult = {
