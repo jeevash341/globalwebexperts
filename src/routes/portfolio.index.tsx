@@ -161,7 +161,9 @@ function PortfolioIndex() {
             Math dashboard.
           </p>
           <div className="mt-10 grid gap-6 lg:grid-cols-2">
-            {seoResults.map((r) => (
+            {seoResults
+              .filter((r) => r.site === "aaarentacar.pk")
+              .map((r) => (
               <article
                 key={r.site}
                 className="flex flex-col rounded-sm border border-border bg-surface p-6"
