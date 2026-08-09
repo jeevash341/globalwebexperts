@@ -25,6 +25,10 @@ export const Route = createFileRoute("/")({
     }),
     links: canonical("/"),
   }),
+  head2: undefined as never,
+  component: Home,
+});
+  }),
   component: Home,
 });
 
