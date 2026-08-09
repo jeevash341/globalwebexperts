@@ -1,7 +1,6 @@
 import { Link, createFileRoute } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
 import founder2 from "@/assets/founder-2.asset.json";
-import office from "@/assets/office.asset.json";
 import { Reveal } from "@/components/ui-kit/reveal";
 import { Section, SectionHeading } from "@/components/ui-kit/section";
 import { site } from "@/data/site";
