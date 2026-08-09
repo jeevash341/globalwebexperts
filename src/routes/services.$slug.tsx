@@ -3,7 +3,7 @@ import { ArrowRight, Check } from "lucide-react";
 import { Reveal } from "@/components/ui-kit/reveal";
 import { Section, SectionHeading } from "@/components/ui-kit/section";
 import { projectBySlug } from "@/data/portfolio";
-import { childrenOf, serviceBySlug, services } from "@/data/services";
+import { childrenOf, serviceBySlug, services, type ServiceEntry } from "@/data/services";
 import { breadcrumbLd, canonical, pageMeta } from "@/lib/seo";
 
 export const Route = createFileRoute("/services/$slug")({
@@ -42,7 +42,7 @@ export const Route = createFileRoute("/services/$slug")({
 });
 
 function ServicePage() {
-  const { service } = Route.useLoaderData();
+  const { service } = Route.useLoaderData() as { service: ServiceEntry };
   const subs = childrenOf(service.slug);
   const parent = service.parent ? serviceBySlug(service.parent) : undefined;
   const siblings = parent ? childrenOf(parent.slug).filter((s) => s.slug !== service.slug) : [];

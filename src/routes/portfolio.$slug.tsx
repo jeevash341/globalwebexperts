@@ -1,7 +1,7 @@
 import { Link, createFileRoute, notFound } from "@tanstack/react-router";
 import { Reveal } from "@/components/ui-kit/reveal";
 import { Section, SectionHeading } from "@/components/ui-kit/section";
-import { projectBySlug } from "@/data/portfolio";
+import { projectBySlug, type Project } from "@/data/portfolio";
 import { breadcrumbLd, canonical, pageMeta } from "@/lib/seo";
 
 export const Route = createFileRoute("/portfolio/$slug")({
@@ -42,7 +42,7 @@ export const Route = createFileRoute("/portfolio/$slug")({
 });
 
 function CaseStudy() {
-  const { project } = Route.useLoaderData();
+  const { project } = Route.useLoaderData() as { project: Project };
 
   return (
     <>
