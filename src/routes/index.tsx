@@ -32,10 +32,10 @@ export const Route = createFileRoute("/")({
 });
 
 const proofStats = [
-  { value: 3.19, suffix: "K", label: "YouTube subscribers", note: "AA Pool Service" },
-  { value: 2.47, suffix: "K", label: "YouTube subscribers", note: "Quetta Sudais 2D" },
-  { value: 1.1, suffix: "K", label: "Facebook followers", note: "SafeLink Technologies" },
-  { value: 2022, suffix: "", label: "Operating since", note: "Karachi, Pakistan" },
+  { value: 50, suffix: "+", label: "Projects completed", note: "Across all service lines" },
+  { value: 100, suffix: "+", label: "Clients worked for", note: "Pakistan & international" },
+  { value: 4.9, suffix: "/5.0", label: "Client rating", note: "Average review score" },
+  { value: 2022, suffix: "", label: "Operating since", note: "Karachi, Sindh" },
 ];
 
 const pillars = [
@@ -134,7 +134,7 @@ function Home() {
           {proofStats.map((s, i) => (
             <Reveal key={s.note} delay={i * 70}>
               <p className="font-display text-3xl font-extrabold text-foreground sm:text-4xl">
-                <Counter to={s.value} suffix={s.suffix} decimals={s.value > 100 ? 0 : 2} />
+                <Counter to={s.value} suffix={s.suffix} decimals={Number.isInteger(s.value) ? 0 : 1} />
               </p>
               <p className="mt-1 text-sm font-medium text-foreground">{s.label}</p>
               <p className="text-xs text-muted-foreground">{s.note}</p>
