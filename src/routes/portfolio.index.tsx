@@ -110,6 +110,42 @@ function PortfolioIndex() {
         ) : null}
       </Section>
 
+      {show("Social Media") ? (
+        <Section className="border-t border-border bg-surface-2">
+          <p className="eyebrow">Social Media</p>
+          <h2 className="mt-3 font-display text-3xl font-extrabold">
+            Managed client channels and audience proof
+          </h2>
+          <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted-foreground">
+            Screenshots taken directly from the client profiles we manage across YouTube, Facebook,
+            Instagram and TikTok.
+          </p>
+          <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {projects
+              .filter((p) => p.categories.includes("Social Media"))
+              .flatMap((p) => p.proof.map((shot) => ({ ...shot, name: p.name })))
+              .map((shot) => (
+                <figure
+                  key={shot.url}
+                  className="overflow-hidden rounded-sm border border-border bg-surface"
+                >
+                  <img
+                    src={shot.url}
+                    alt={shot.alt}
+                    loading="lazy"
+                    decoding="async"
+                    className="w-full bg-surface-2 object-contain"
+                  />
+                  <figcaption className="border-t border-border p-4">
+                    <p className="font-display text-sm font-bold">{shot.name}</p>
+                    <p className="mt-1 text-xs text-muted-foreground">{shot.caption}</p>
+                  </figcaption>
+                </figure>
+              ))}
+          </div>
+        </Section>
+      ) : null}
+
       {show("Web Development") ? (
         <Section className="border-t border-border bg-surface-2">
           <p className="eyebrow">Web Development</p>
