@@ -14,6 +14,7 @@ import { reportLovableError } from "../lib/lovable-error-reporting";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 import { FloatingContact } from "@/components/layout/floating-contact";
+import { AiAssistant } from "@/components/assistant/ai-assistant";
 import { ThemeProvider, themeInitScript } from "@/components/theme/theme-provider";
 import { Toaster } from "@/components/ui/sonner";
 import { addressOneLine, site } from "@/data/site";
@@ -167,6 +168,7 @@ function RootComponent() {
           </main>
           <Footer />
           <FloatingContact />
+          <AiAssistant />
           <Toaster position="top-center" richColors />
         </div>
       </ThemeProvider>
