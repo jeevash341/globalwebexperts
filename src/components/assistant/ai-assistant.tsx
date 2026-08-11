@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Send, X } from "lucide-react";
-import botIcon from "@/assets/ai-assistant-bot.png.asset.json";
+import botIcon from "@/public/favicon.png";
 
 type Msg = { role: "user" | "assistant"; content: string };
 
