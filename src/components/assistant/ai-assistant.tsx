@@ -1,7 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from "react";
-import { Send, Sparkles, X } from "lucide-react";
-import logo from "@/assets/logo-sphere.asset.json";
-import { mailtoUrl, telUrl, whatsappUrl } from "@/data/site";
+import { Send, X } from "lucide-react";
+import botIcon from "@/assets/ai-assistant-bot.png.asset.json";
 
 type Msg = { role: "user" | "assistant"; content: string };
 
@@ -98,21 +97,28 @@ export function AiAssistant() {
 
   return (
     <>
-      <button
-        ref={triggerRef}
-        type="button"
-        onClick={() => setOpen((v) => !v)}
-        aria-expanded={open}
-        aria-haspopup="dialog"
-        aria-label={open ? "Close Global Web Experts AI Assistant" : "Open Global Web Experts AI Assistant"}
-        className="fixed bottom-4 left-4 z-40 inline-flex items-center gap-2 rounded-md border border-border bg-surface px-3 py-2 text-xs font-semibold text-foreground shadow-lg backdrop-blur transition-colors hover:border-accent/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-background sm:bottom-6 sm:left-6"
-      >
-        <span className="grid h-6 w-6 place-items-center overflow-hidden rounded-sm">
-          <img src={logo.url} alt="" aria-hidden="true" className="h-full w-full object-contain" />
-        </span>
-        <span className="hidden sm:inline">AI Assistant</span>
-        <Sparkles className="h-3.5 w-3.5 text-accent" aria-hidden="true" />
-      </button>
+      <div className="motion-safe:animate-ai-float fixed bottom-4 left-4 z-40 sm:bottom-6 sm:left-6">
+        <span
+          aria-hidden="true"
+          className="motion-safe:animate-ai-breathe pointer-events-none absolute inset-0 rounded-full bg-accent/30 blur-xl"
+        />
+        <button
+          ref={triggerRef}
+          type="button"
+          onClick={() => setOpen((v) => !v)}
+          aria-expanded={open}
+          aria-haspopup="dialog"
+          aria-label={open ? "Close Global Web Experts AI Assistant" : "Open Global Web Experts AI Assistant"}
+          className="motion-safe:animate-ai-sheen relative grid h-14 w-14 place-items-center overflow-hidden rounded-full border border-border bg-surface shadow-lg backdrop-blur transition-transform duration-300 hover:scale-105 hover:border-accent/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+        >
+          <img
+            src={botIcon.url}
+            alt=""
+            aria-hidden="true"
+            className="h-11 w-11 object-contain"
+          />
+        </button>
+      </div>
 
       {open ? (
         <div
@@ -124,7 +130,7 @@ export function AiAssistant() {
         >
           <div className="flex items-center gap-2 border-b border-border bg-surface px-3 py-2.5">
             <span className="grid h-7 w-7 shrink-0 place-items-center overflow-hidden rounded-sm">
-              <img src={logo.url} alt="" aria-hidden="true" className="h-full w-full object-contain" />
+              <img src={botIcon.url} alt="" aria-hidden="true" className="h-full w-full object-contain" />
             </span>
             <span className="min-w-0 flex-1">
               <span className="block truncate font-display text-sm font-bold">
@@ -169,10 +175,10 @@ export function AiAssistant() {
             ))}
 
             {loading ? (
-              <div className="mr-auto flex items-center gap-1.5 rounded-md border border-border bg-surface px-3 py-2.5">
-                <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-accent" />
-                <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-accent [animation-delay:150ms]" />
-                <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-accent [animation-delay:300ms]" />
+              <div className="mr-auto flex w-fit items-center gap-1.5 rounded-md border border-border bg-surface px-3 py-2.5">
+                <span className="motion-safe:animate-ai-dot h-1.5 w-1.5 rounded-full bg-accent" />
+                <span className="motion-safe:animate-ai-dot h-1.5 w-1.5 rounded-full bg-accent [animation-delay:200ms]" />
+                <span className="motion-safe:animate-ai-dot h-1.5 w-1.5 rounded-full bg-accent [animation-delay:400ms]" />
                 <span className="sr-only">Assistant is typing</span>
               </div>
             ) : null}
@@ -228,18 +234,6 @@ export function AiAssistant() {
               <Send className="h-4 w-4" aria-hidden="true" />
             </button>
           </form>
-
-          <div className="flex items-center justify-center gap-3 border-t border-border px-3 py-2 text-[11px] text-muted-foreground">
-            <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="font-semibold hover:text-accent">
-              WhatsApp
-            </a>
-            <a href={telUrl} className="font-semibold hover:text-accent">
-              Call
-            </a>
-            <a href={mailtoUrl} className="font-semibold hover:text-accent">
-              Email
-            </a>
-          </div>
         </div>
       ) : null}
     </>

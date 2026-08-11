@@ -280,6 +280,68 @@
   animation: gwe-drift 14s ease-in-out infinite;
 }
 
+@keyframes gwe-ai-float {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(0, -3px, 0);
+  }
+}
+
+@keyframes gwe-ai-breathe {
+  0%,
+  100% {
+    opacity: 0.35;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.75;
+    transform: scale(1.12);
+  }
+}
+
+@keyframes gwe-ai-sheen {
+  0%,
+  88%,
+  100% {
+    box-shadow: 0 0 0 0 color-mix(in oklab, var(--color-accent) 0%, transparent);
+  }
+  94% {
+    box-shadow: 0 0 0 6px color-mix(in oklab, var(--color-accent) 14%, transparent);
+  }
+}
+
+@keyframes gwe-ai-dot {
+  0%,
+  60%,
+  100% {
+    opacity: 0.28;
+    transform: translateY(0);
+  }
+  30% {
+    opacity: 1;
+    transform: translateY(-2px);
+  }
+}
+
+@utility animate-ai-float {
+  animation: gwe-ai-float 5.5s ease-in-out infinite;
+}
+
+@utility animate-ai-breathe {
+  animation: gwe-ai-breathe 4.5s ease-in-out infinite;
+}
+
+@utility animate-ai-sheen {
+  animation: gwe-ai-sheen 6s ease-in-out infinite;
+}
+
+@utility animate-ai-dot {
+  animation: gwe-ai-dot 1.3s ease-in-out infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
