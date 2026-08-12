@@ -56,7 +56,7 @@ try {
   const provider = createGeminiProvider(geminiKey);
 
 const result = streamText({
-  model: provider("gemini-2.5-flash"),
+  model: provider("gemini-3.6-flash"),
   system: SYSTEM_PROMPT,
   messages: clean,
 });
