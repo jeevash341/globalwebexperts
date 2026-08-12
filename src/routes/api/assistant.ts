@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { streamText } from "ai";
-import { createLovableAiGatewayProvider } from "@/lib/ai-gateway.server";
+import { createGeminiProvider, createLovableAiGatewayProvider } from "@/lib/ai-gateway.server";
 
 type ChatMessage = { role: "user" | "assistant"; content: string };
 
@@ -46,15 +46,19 @@ export const Route = createFileRoute("/api/assistant")({
           return new Response("Messages are required", { status: 400 });
         }
 
-        const key = process.env["LOVABLE_API_KEY"];
-        if (!key) {
+        const lovableKey = process.env["LOVABLE_API_KEY"];
+        const geminiKey = process.env["GEMINI_API_KEY"];
+        if (!lovableKey && !geminiKey) {
           return new Response("Assistant is not configured", { status: 500 });
         }
 
         try {
-          const gateway = createLovableAiGatewayProvider(key);
+          const provider = lovableKey
+            ? createLovableAiGatewayProvider(lovableKey)
+            : createGeminiProvider(geminiKey!);
+          const modelId = lovableKey ? "google/gemini-2.5-flash" : "gemini-2.5-flash";
           const result = streamText({
-            model: gateway("google/gemini-2.5-flash"),
+            model: provider(modelId),
             system: SYSTEM_PROMPT,
             messages: clean,
           });
