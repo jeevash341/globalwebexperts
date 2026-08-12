@@ -46,17 +46,15 @@ export const Route = createFileRoute("/api/assistant")({
           return new Response("Messages are required", { status: 400 });
         }
 
-        const lovableKey = process.env["LOVABLE_API_KEY"];
         const geminiKey = process.env["GEMINI_API_KEY"];
-        if (!lovableKey && !geminiKey) {
-          return new Response("Assistant is not configured", { status: 500 });
-        }
 
-        try {
-          const provider = lovableKey
-            ? createLovableAiGatewayProvider(lovableKey)
-            : createGeminiProvider(geminiKey!);
-          const modelId = lovableKey ? "google/gemini-2.5-flash" : "gemini-2.5-flash";
+if (!geminiKey) {
+  return new Response("Assistant is not configured", { status: 500 });
+}
+
+try {
+  const provider = createGeminiProvider(geminiKey);
+  const modelId = "gemini-2.5-flash";
           const result = streamText({
             model: provider(modelId),
             system: SYSTEM_PROMPT,
