@@ -85,7 +85,7 @@ export function AiAssistant() {
       } catch {
         setMessages(next);
         setError(
-          "The assistant is temporarily unavailable. Please try again, or reach us on WhatsApp at 0334-3215006.",
+          "Sorry, I'm having trouble connecting right now. Please try again in a moment, or reach us on WhatsApp at 0334-3215006.",
         );
       } finally {
         setLoading(false);
@@ -109,14 +109,20 @@ export function AiAssistant() {
           aria-expanded={open}
           aria-haspopup="dialog"
           aria-label={open ? "Close Global Web Experts AI Assistant" : "Open Global Web Experts AI Assistant"}
-          className="motion-safe:animate-ai-sheen relative grid h-14 w-14 place-items-center overflow-hidden rounded-full border border-border bg-surface shadow-lg backdrop-blur transition-transform duration-300 hover:scale-105 hover:border-accent/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+          className="motion-safe:animate-ai-sheen relative flex max-w-[calc(100vw-2rem)] items-center gap-2 overflow-hidden rounded-full border border-border bg-surface py-1.5 pl-1.5 pr-3 shadow-lg backdrop-blur transition-transform duration-300 hover:scale-105 hover:border-accent/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-background"
         >
           <img
             src={botIcon.url}
             alt=""
             aria-hidden="true"
-            className="h-11 w-11 object-contain"
+            width={256}
+            height={256}
+            decoding="async"
+            className="h-14 w-14 shrink-0 object-contain"
           />
+          <span className="whitespace-nowrap text-xs font-semibold tracking-tight text-foreground">
+            AI Assistant
+          </span>
         </button>
       </div>
 
