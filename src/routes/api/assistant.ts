@@ -54,12 +54,13 @@ if (!geminiKey) {
 
 try {
   const provider = createGeminiProvider(geminiKey);
-  const modelId = "gemini-2.5-flash";
-          const result = streamText({
-            model: provider(modelId),
-            system: SYSTEM_PROMPT,
-            messages: clean,
-          });
+const modelId = "gemini-2.5-flash";
+
+const result = streamText({
+  model: provider(modelId),
+  system: SYSTEM_PROMPT,
+  messages: clean,
+});
 
           return result.toTextStreamResponse();
         } catch {
