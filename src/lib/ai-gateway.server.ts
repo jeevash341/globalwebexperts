@@ -10,3 +10,15 @@ export function createLovableAiGatewayProvider(lovableApiKey: string) {
     },
   });
 }
+
+/**
+ * Direct Google Gemini (OpenAI-compatible endpoint), used when the app is
+ * deployed outside Lovable (e.g. Vercel) with GEMINI_API_KEY configured.
+ */
+export function createGeminiProvider(geminiApiKey: string) {
+  return createOpenAICompatible({
+    name: "google",
+    baseURL: "https://generativelanguage.googleapis.com/v1beta/openai",
+    headers: { Authorization: `Bearer ${geminiApiKey}` },
+  });
+}
