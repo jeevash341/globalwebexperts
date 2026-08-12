@@ -167,7 +167,6 @@ function RootComponent() {
           </main>
           <Footer />
           <FloatingContact />
-          <AiAssistant />
           <Toaster position="top-center" richColors />
         </div>
       </ThemeProvider>
