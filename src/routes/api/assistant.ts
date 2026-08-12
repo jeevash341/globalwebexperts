@@ -54,15 +54,14 @@ if (!geminiKey) {
 
 try {
   const provider = createGeminiProvider(geminiKey);
-const modelId = "gemini-2.5-flash";
 
 const result = streamText({
-  model: provider(modelId),
+  model: provider("gemini-2.5-flash"),
   system: SYSTEM_PROMPT,
   messages: clean,
 });
 
-          return result.toTextStreamResponse();
+return result.toTextStreamResponse();
         } catch {
           return new Response("Assistant is temporarily unavailable", { status: 502 });
         }
