@@ -18,7 +18,6 @@ import { Route as RequestAQuoteRouteImport } from './routes/request-a-quote'
 import { Route as ResultsRouteImport } from './routes/results'
 import { Route as ServicesRouteImport } from './routes/services'
 import { Route as TestimonialsRouteImport } from './routes/testimonials'
-import { Route as ApiAssistantRouteImport } from './routes/api/assistant'
 import { Route as BlogIndexRouteImport } from './routes/blog.index'
 import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
 import { Route as PortfolioIndexRouteImport } from './routes/portfolio.index'
@@ -71,11 +70,6 @@ const TestimonialsRoute = TestimonialsRouteImport.update({
   path: '/testimonials',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ApiAssistantRoute = ApiAssistantRouteImport.update({
-  id: '/api/assistant',
-  path: '/api/assistant',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const BlogIndexRoute = BlogIndexRouteImport.update({
   id: '/',
   path: '/',
@@ -117,7 +111,6 @@ export interface FileRoutesByFullPath {
   '/results': typeof ResultsRoute
   '/services': typeof ServicesRouteWithChildren
   '/testimonials': typeof TestimonialsRoute
-  '/api/assistant': typeof ApiAssistantRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/portfolio/$slug': typeof PortfolioSlugRoute
   '/services/$slug': typeof ServicesSlugRoute
@@ -132,7 +125,6 @@ export interface FileRoutesByTo {
   '/request-a-quote': typeof RequestAQuoteRoute
   '/results': typeof ResultsRoute
   '/testimonials': typeof TestimonialsRoute
-  '/api/assistant': typeof ApiAssistantRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/portfolio/$slug': typeof PortfolioSlugRoute
   '/services/$slug': typeof ServicesSlugRoute
@@ -151,7 +143,6 @@ export interface FileRoutesById {
   '/results': typeof ResultsRoute
   '/services': typeof ServicesRouteWithChildren
   '/testimonials': typeof TestimonialsRoute
-  '/api/assistant': typeof ApiAssistantRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/portfolio/$slug': typeof PortfolioSlugRoute
   '/services/$slug': typeof ServicesSlugRoute
@@ -171,7 +162,6 @@ export interface FileRouteTypes {
     | '/results'
     | '/services'
     | '/testimonials'
-    | '/api/assistant'
     | '/blog/$slug'
     | '/portfolio/$slug'
     | '/services/$slug'
@@ -186,7 +176,6 @@ export interface FileRouteTypes {
     | '/request-a-quote'
     | '/results'
     | '/testimonials'
-    | '/api/assistant'
     | '/blog/$slug'
     | '/portfolio/$slug'
     | '/services/$slug'
@@ -204,7 +193,6 @@ export interface FileRouteTypes {
     | '/results'
     | '/services'
     | '/testimonials'
-    | '/api/assistant'
     | '/blog/$slug'
     | '/portfolio/$slug'
     | '/services/$slug'
@@ -223,7 +211,6 @@ export interface RootRouteChildren {
   ResultsRoute: typeof ResultsRoute
   ServicesRoute: typeof ServicesRouteWithChildren
   TestimonialsRoute: typeof TestimonialsRoute
-  ApiAssistantRoute: typeof ApiAssistantRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -289,13 +276,6 @@ declare module '@tanstack/react-router' {
       path: '/testimonials'
       fullPath: '/testimonials'
       preLoaderRoute: typeof TestimonialsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/api/assistant': {
-      id: '/api/assistant'
-      path: '/api/assistant'
-      fullPath: '/api/assistant'
-      preLoaderRoute: typeof ApiAssistantRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/blog/': {
@@ -393,8 +373,17 @@ const rootRouteChildren: RootRouteChildren = {
   ResultsRoute: ResultsRoute,
   ServicesRoute: ServicesRouteWithChildren,
   TestimonialsRoute: TestimonialsRoute,
-  ApiAssistantRoute: ApiAssistantRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}

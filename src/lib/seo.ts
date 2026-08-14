@@ -1,11 +1,13 @@
 import { site } from "@/data/site";
 
+export const defaultOgImage = `${site.url}/assets/og-image.jpg`;
+
 export function pageMeta({
   title,
   description,
   path,
   type = "website",
-  image,
+  image = defaultOgImage,
 }: {
   title: string;
   description: string;
@@ -25,10 +27,9 @@ export function pageMeta({
     { name: "twitter:title", content: title },
     { name: "twitter:description", content: description },
   ];
-  if (image) {
-    meta.push({ property: "og:image", content: image });
-    meta.push({ name: "twitter:image", content: image });
-  }
+  const absoluteImage = image.startsWith("http") ? image : `${site.url}${image}`;
+  meta.push({ property: "og:image", content: absoluteImage });
+  meta.push({ name: "twitter:image", content: absoluteImage });
   return meta;
 }
 
